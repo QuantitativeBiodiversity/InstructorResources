@@ -18,3 +18,8 @@ http://sbsc.yale.edu/events/workshop-rob-hijmans-spatial-biodiversity-analysis-r
 
 
 Some helpful books:
+
+
+
+
+
