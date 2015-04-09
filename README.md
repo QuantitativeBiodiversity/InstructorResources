@@ -16,10 +16,18 @@ M.M. generated the vast majority of this material
 
 **GitFlow.pdf**: Nicely diagrammed illustrations of the GitHub-based Quantative Biodiversity workflow
 
-**InstructorNotes.txt**:
+**InstructorNotes.txt**: Empty file for storing notes
 
-**Resources**:
+**Resources**: A basic set reference materials relating to Git, R, Unix/Linux, and the installation of various software.
 
-**Syllabus.pdf**:
+* **GitFlow-All.pdf**
+* **RMarkdownCheatSheet.pdf**
+* **RMarkdownCheatSheet.png**
+* **R_ReferenceCard.pdf**
+* **SoftwareInstallation.Rmd**
+* **SoftwareInstallation.pdf**
+* **Unix_Reference.pdf**
+* **git-cheat-sheet.pdf**
+* **git-cheat-sheet.png** 	
 
-**Syllabus.Rmd**:
+**Syllabus.pdf and Syllabus.Rmd**: For the 2015 class
