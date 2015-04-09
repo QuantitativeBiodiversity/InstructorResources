@@ -9,9 +9,9 @@ InstructorResources
 
 **CourseRequirements.md**: Software required to use the Quantative Biodiversity 2015 assignments and workflow.
 
-**CourseResources.md:** 
+**CourseResources.md:** Helpful links for learning about GitHub, R, RStudio, ggplot2, and phylogenetic ecology tools Picante and Kembel
 
-**GitAutomation**:
+**GitAutomation**: A folder containing bash scripts for automating the deployment of assignments and materials to student repositories, and a text file containing the names of the students repositories (or any repositories receiving automated updates).
 
 **GitFlow.pdf**:
 
