@@ -3,7 +3,7 @@ InstructorResources
 
 **Contributors**: Jay Lennon (lennonj@indiana.edu), Ken Locey, & Mario Muscarella  
 
-**Funding**: Development of Indiana University's first Quantitative Biodiversity class, including the materials in this repository, were supported by a National Science Foundation Dimensions of Biodiversity grant (1442246) awarded to Drs Jay Lennon and Ken Locey of Indiana University, Bloomington: http://www.nsf.gov/awardsearch/showAward?AWD_ID=1442246&HistoricalAwards=false
+**Funding**: Development of Indiana University's first Quantitative Biodiversity class, including the materials in this repository, were supported by a National Science Foundation Dimensions of Biodiversity grant ([1442246](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1442246)) awarded to Drs Jay Lennon and Ken Locey of Indiana University, Bloomington.
 
 ###Contents
 
