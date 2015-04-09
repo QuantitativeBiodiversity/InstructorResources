@@ -1,7 +1,8 @@
 InstructorResources
 ===================
 
-**Contributors**: Jay Lennon, Ken Locey, & Mario Muscarella
+**Contributors**: Jay Lennon, Ken Locey, & Mario Muscarella  
+M.M. generated the vast majority of this material
 
 **Funding**: Development of Indiana University's first Quantitative Biodiversity class, including the materials in this repository, were supported by a National Science Foundation Dimensions of Biodiversity grant (#1442246) awarded to Dr.'s Jay Lennon and Ken Locey of Indiana University (Bloomington): http://www.nsf.gov/awardsearch/showAward?AWD_ID=1442246&HistoricalAwards=false
 
@@ -13,7 +14,7 @@ InstructorResources
 
 **GitAutomation**: A folder containing bash scripts for automating the deployment of assignments and materials to student repositories, and a text file containing the names of the students repositories (or any repositories receiving automated updates).
 
-**GitFlow.pdf**:
+**GitFlow.pdf**: Nicely diagrammed illustrations of the GitHub-based Quantative Biodiversity workflow
 
 **InstructorNotes.txt**:
 
