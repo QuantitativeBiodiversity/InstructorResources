@@ -1,5 +1,6 @@
+#!/bin/bash
 while read EachLine
 do
 echo $EachLine
-git clone https://github.iu.edu/2015-QuantitativeBiodiversity/$EachLine
+git clone git@github.com:QBstudents/$EachLine.git
 done < $1

@@ -2,6 +2,6 @@ while read EachLine
 do
 echo $EachLine
 cd ./$EachLine
-git push origin master
-cd ../
-done < $1
+echo $1 >> .gitignore
+cd ..
+done < $2

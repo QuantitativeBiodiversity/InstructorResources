@@ -1,0 +1,97 @@
+---
+title: "QB Student Repo Updating"
+date: "2/25/2017"
+output: pdf_document
+---
+
+This is a brief tutorial outlining how to push content to student GitHub repositories for Quantitative Biodiversity.
+In general, each of these scripts follows this structure: 
+```
+sh {name of script} {optional arguments for each script} {participant list}
+```
+
+# Create List of Student Repos
+First, update the text file `participant_repos.txt` that includes the name of each student repository. For example, `participant_repos.txt` looks like this:
+
+```
+QB2017_Beidler
+QB2017_Benavidez
+QB2017_Bennett
+QB2017_Gibson
+QB2017_Kuo
+QB2017_Moger-Reischer
+```
+
+# Clone Student Repos
+First, you'll need to clone student repos to your local computer so you can push content to them. Navigate to the location where you'd like to set up the student repos. Make sure you know the path to the shell scripts so you can access them. 
+
+Clone the repos with the `GitCloneQB.sh` script:
+```
+sh GitCloneQB.sh participant_repos.txt
+```
+
+If this doesn't work, you may need to make sure your ssh key is set up for the repos you're trying to access, otherwise you'll need to change the following line in `GitCloneQB.sh` to work with html instead of ssh:
+```
+git clone git@github.com:QBstudents/$EachLine.git
+```
+
+
+# Update Student Repos
+Next, we'll push content to the each repo. You'll need to know the paths to the files you'd like to push. 
+
+## Make Recipient Directories
+First, make the recipient directory (e.g., `Week7-PhyloCom`) that you'll be pushing to with the `GitMkdirQB.sh` script. You'll need to supply the relative path (starting from each student repository, e.g., `QB2017_Test`). So, to create Phylocom, we'll run this line of code: 
+```
+sh GitMkdirQB.sh Week7-PhyloCom participant_repos.txt
+```
+To create the data folder within the Week7-PhyloCom directory, we'll run this:
+```
+sh GitMkdirQB.sh Week7-Phylocom/data participant_repos.txt
+```
+
+## Copy Files to New Directory
+To copy files, we'll use the `GitCopyQB.sh` script. This take the following arguments: {path to file to copy} {path to recipient directory} {student repo list}
+
+For example, to copy the Phylocom assignment (replace the path to file with the path on your machine):
+```
+sh GitCopyQB.sh ../QB-2017/Week7-PhyloCom/PhyloCom_assignment.Rmd Week7-PhyloCom/ participant_repos.txt
+```
+
+## Add and Commit files
+To add and commit files you just added use the `GitAddCommitQB.sh` script. The first argument can be the path to a specific file (e.g., `Week6-PhyloTraits/PhyloTraits_handout.Rmd`) or a flag that git recognizes, e.g., `-A` for all files. 
+The next argument is a git commit message (e.g., what you would normally type after `-m` in a git commit). Don't type `-m` though. 
+Last, you'll need to supply the list of repos.
+
+Here's an example of how to add week 7 materials:
+```
+sh GitAddCommitQB.sh -A 'Adding Week7 Materials' participant_repos.txt
+```
+
+## Push to Student Repos on GitHub
+Pushing to student repos is easy, just run `GitPushQB.sh` and supply the list of repos:
+
+```
+sh GitPushQB.sh participant_repos.txt
+```
+
+# Other Scripts
+There are a few other scripts you may need to use. I'll describe how to use them here. 
+
+## Remove Files 
+If you need to remove a file from each student's repo, use the `GitRmQB.sh` script in a similar way:
+```
+sh GitRmQB.sh path/to/file participant_repos.txt
+```
+
+## Moving Files
+If you need to move (or rename) a file in each repo, use the `GitMvQB.sh` script:
+```
+sh GitMvQB.sh path/of/file/to/move path/of/place/to/move/it participant_repos.txt
+```
+
+## Updating .gitignore Files
+To update students' gitignore files (e.g., to ignore .DS_Store files):
+```
+sh GitUpdateGitIgnore.sh '.DS_Store' participant_repos.txt
+```
+
