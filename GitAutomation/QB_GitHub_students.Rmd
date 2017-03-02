@@ -85,7 +85,18 @@ Otherwise you may try changing the following line in `GitCloneQB.sh` to work wit
 git clone git@github.com:QBstudents/$EachLine.git
 ```
 
-## STEP 5: UPDATE STUDENT REPOSITORIES 
+## STEP 5: PULL FROM UPSTREAM
+
+Before you uupdate the student repositories (i.e, add files), you will need to pull files (e.g., Assignments) that were likely merged by you or another instructor. 
+Otherwise, you will likekly encounter a conflict. 
+
+```
+sh GitPullQB.sh participant_repos.txt
+```
+
+There is also another file in the GitAutomation folder named `GitPullQB2.sh`, but it is not clear what this script does. 
+
+## STEP 6: UPDATE STUDENT REPOSITORIES 
 
 In the following sections, we outline how to push content to the each student repository. 
 You'll need to know the paths to the files you would like to push. 
@@ -133,7 +144,7 @@ Pushing to student repos is easy, just run `GitPushQB.sh` and supply the list of
 ```
 sh GitPushQB.sh participant_repos.txt
 ```
-## STEP 6: OTHER SCRIPTS
+## STEP 7: OTHER SCRIPTS
 
 There are a few other scripts you may need to use.
 See below for descriptions on how to use them. 
