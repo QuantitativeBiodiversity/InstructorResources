@@ -11,7 +11,7 @@ This brief tutorial outlines how Assignments, Handouts, data files, etc. are "pu
 
 ## STEP 1: SETTING UP SSH KEY
 
-We found that some of our scipts did not work unless we enabled SSH key.
+We found that some of our scripts did not work unless we enabled SSH key.
 If this is not set up on your computer already, you can do so with the following steps.
 In the terminal window generate a new SSH key with the following command:
 
@@ -30,7 +30,7 @@ ssh-add ~/.ssh/id_rsa
 
 Next you need to add your SSH key to your GitHub account. 
 To obtain your SSH key, type the following command at the terminal.
-(Note: your key may be named one of the folllowing instead of id_rsa.pub: id_dsa.pub, id_ecdsa.pub or id_ed25519.pub)
+(Note: your key may be named one of the following instead of id_rsa.pub: id_dsa.pub, id_ecdsa.pub or id_ed25519.pub)
 
 ```
 pbcopy < ~/.ssh/id_rsa.pub 
@@ -48,37 +48,45 @@ ssh -T git@github.com
 
 ## STEP 2: CREATE STUDENT REPOSITORIES
 
-An instructor will need to create an upstream repository for each student in the QBstudents GitHub organization (<https://github.com/QBstudents>).
+An instructor will need to create an upstream repository for each student in the QBstudents GitHub organization (<https://github.com/QBstudents>). In 2017, student repos from previous years were downloaded to local computers and then deleted. 
 
 ## STEP 3: SETUP ON YOUR LOCAL MACHINE
 
 Create a GitHub Directory (e.g., QBstudents) that contains files found in the
 QuantitativeBiodiversity/InstructorResources/GitAutomation folder (see <https://github.com/QuantitativeBiodiversity/InstructorResources>).
+(Jay forked InstructorResources to local machine then copied the the contents of the GitAutomation folder to the QBstudents folder that he created)
 In that folder there is a file called `participation_repos.txt`. 
-This file should contain all of the names of the students' respositories that you created. 
+This file should contain all of the names of the students' repositories that you created. 
+
 The contents of that file should look something like this:
 
 ```
-QB2017_Beidler
-QB2017_Benavidez
-QB2017_Bennett
-QB2017_Gibson
-QB2017_Kuo
-QB2017_Moger-Reischer
-QB2017_Test
+QB2019_Miller
+QB2019_Bolin
+QB2019_Brewer
+QB2019_Caple
+QB2019_Crawley
+QB2019_Hibbins
+QB2019_Mueller
+QB2019_Peckenpaugh
+QB2019_Rios
+QB2019_Phillips
+QB2019_Test
 ```
-Note you will also have QB2017_Test, which is for instructors use as it cannot be accessed by students.
+Note you will also have QB2019_Test, which is for instructors use as it cannot be accessed by students.
 
 ## STEP 4: CLONE STUDENT REPOSITORIES TO YOUR COMPUTER
 
 You need to clone student repositories to your local computer so you can push content to them. In the terminal, navigate to the location where you would like to set up the student repositories. 
 Make sure you know the path to the shell scripts so you can access them. 
+(Jay did this in the QBstudents folder that contained the copied GitAutomation contents)
 Now we will use the `GitCloneQB.sh` script to clone:
 
 ```
 sh GitCloneQB.sh participant_repos.txt
 ```
-This is where we ran into problems in 2017 when we did not have the SSH key enabled. 
+This is where we ran into problems in 2017 when we did not have the SSH key enabled. (no issues with this in 2019, so did not have to monkey with next step)
+
 Otherwise you may try changing the following line in `GitCloneQB.sh` to work with html instead of ssh:
 
 ```
@@ -87,8 +95,8 @@ git clone git@github.com:QBstudents/$EachLine.git
 
 ## STEP 5: PULL FROM UPSTREAM
 
-Before you uupdate the student repositories (i.e, add files), you will need to pull files (e.g., Assignments) that were likely merged by you or another instructor. 
-Otherwise, you will likekly encounter a conflict. 
+Before you update the student repositories (i.e, add files), you will need to pull files (e.g., Assignments) that were likely merged by you or another instructor. 
+Otherwise, you will likely encounter a conflict. 
 
 ```
 sh GitPullQB.sh participant_repos.txt
@@ -103,7 +111,7 @@ You'll need to know the paths to the files you would like to push.
 
 ### A) Make Recipient Directories
 First, we need to make the recipient directory (e.g., `Week7-PhyloCom`) that you'll be pushing to with the `GitMkdirQB.sh` script. 
-You will need to supply the relative path (starting from each student repository, e.g., `QB2017_Test`). 
+You will need to supply the relative path (starting from each student repository, e.g., `QB2019_Test`). 
 So, for example, to create Phylocom, we'll run this line of code:
 
 ```
@@ -156,6 +164,26 @@ If you need to remove a file from each student's repo, use the `GitRmQB.sh` scri
 ```
 sh GitRmQB.sh path/to/file participant_repos.txt
 ```
+
+You may need to remove a file that no longer exists in the QB_2019 repo. In this case, you can just cd to the appropriate directory containing student repos, and for example, type the following to remove a directory
+
+```
+rm -r QB2019_*/2.Worksheets/8.Phylodiversity
+```
+
+After that, following instructions above, you would type:
+
+```
+sh GitAddCommitQB.sh -A 'removed 8.Phylodiversity' participant_repos.txt
+```
+
+and
+
+```
+sh GitPushQB.sh participant_repos.txt
+```
+
+The old phylodiversity file will now be removed from all of the students's repos.
 
 ### B) Moving Files
 
