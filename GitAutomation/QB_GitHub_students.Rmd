@@ -7,7 +7,7 @@ geometry: margin=2.54cm
 ---
 
 ## OVERVIEW
-This brief tutorial outlines how Assignments, Handouts, data files, etc. are "pushed" to student repositories via GitHub. 
+This brief tutorial outlines how worksheets, handouts, data files, etc. are "pushed" to student repositories via GitHub. 
 
 ## STEP 1: SETTING UP SSH KEY
 
@@ -48,17 +48,18 @@ ssh -T git@github.com
 
 ## STEP 2: CREATE STUDENT REPOSITORIES
 
-An instructor will need to create an upstream repository for each student in the QBstudents GitHub organization (<https://github.com/QBstudents>). In 2017, student repos from previous years were downloaded to local computers and then deleted. 
+An instructor will need to create an upstream repository for each student in the QBstudents GitHub organization (<https://github.com/QBstudents>). 
+In 2017, student repos from previous years were downloaded to local computers and then deleted. 
 
 ## STEP 3: SETUP ON YOUR LOCAL MACHINE
 
 Create a GitHub Directory (e.g., QBstudents) that contains files found in the
 QuantitativeBiodiversity/InstructorResources/GitAutomation folder (see <https://github.com/QuantitativeBiodiversity/InstructorResources>).
-(Jay forked InstructorResources to local machine then copied the the contents of the GitAutomation folder to the QBstudents folder that he created)
-In that folder there is a file called `participation_repos.txt`. 
-This file should contain all of the names of the students' repositories that you created. 
-
-The contents of that file should look something like this:
+(Jay forked InstructorResources to local machine then copied the contents of the GitAutomation folder to a new directory -- QBstudents -- that he created)
+In the GitAutomation folder there is a file called `participation_repos.txt`. 
+This file must contain all of the names of the students' repositories that you created.
+Make sure there are no spaces before or after names as this will create errors.
+The contents of `participation_repos.txt` should look like this:
 
 ```
 QB2019_Miller
@@ -77,8 +78,7 @@ Note you will also have QB2019_Test, which is for instructors use as it cannot b
 
 ## STEP 4: CLONE STUDENT REPOSITORIES TO YOUR COMPUTER
 
-You need to clone student repositories to your local computer so you can push content to them. In the terminal, navigate to the location where you would like to set up the student repositories. 
-Make sure you know the path to the shell scripts so you can access them. 
+You need to clone student repositories to your local computer so you can push content to them. In the terminal, navigate to the location where you would like to set up the student repositories (e.g., ~/GitHub/QBstudents/). 
 (Jay did this in the QBstudents folder that contained the copied GitAutomation contents)
 Now we will use the `GitCloneQB.sh` script to clone:
 
@@ -93,43 +93,60 @@ Otherwise you may try changing the following line in `GitCloneQB.sh` to work wit
 git clone git@github.com:QBstudents/$EachLine.git
 ```
 
-## STEP 5: PULL FROM UPSTREAM
+## STEP 5: MERGE AND PULL FROM UPSTREAM
 
-Before you update the student repositories (i.e, add files), you will need to pull files (e.g., Assignments) that were likely merged by you or another instructor. 
-Otherwise, you will likely encounter a conflict. 
+Before you update the student repositories (i.e, add files), you should first merge any pull requests that were made by students. 
+After that, you need to pull (i.e., fetch + merge) changes, which might include completed worksheet; otherwise, you will likely encounter a conflict. 
+The following script will peform a batch pull:
 
 ```
 sh GitPullQB.sh participant_repos.txt
 ```
 
-There is also another file in the GitAutomation folder named `GitPullQB2.sh`, but it is not clear what this script does. 
+(There is also another file in the GitAutomation folder named `GitPullQB2.sh`, but it is not clear what this script does)
 
 ## STEP 6: UPDATE STUDENT REPOSITORIES 
 
 In the following sections, we outline how to push content to the each student repository. 
 You'll need to know the paths to the files you would like to push. 
 
-### A) Make Recipient Directories
+### A) Make recipient directories
 First, we need to make the recipient directory (e.g., `Week7-PhyloCom`) that you'll be pushing to with the `GitMkdirQB.sh` script. 
 You will need to supply the relative path (starting from each student repository, e.g., `QB2019_Test`). 
-So, for example, to create Phylocom, we'll run this line of code:
+So, for example, we can create a new directory with the following code at the Terminal:
 
 ```
 sh GitMkdirQB.sh Week7-PhyloCom participant_repos.txt
 ```
+
 And to create a data folder within the Week7-PhyloCom directory, you would run the following:
+(OK, but is this necessary?)
 
 ```
 sh GitMkdirQB.sh Week7-Phylocom/data participant_repos.txt
 ```
-### B) Copy Files to Newly Created Directory
+
+In the following example, you could make a subdirectory ("1.Introductions") in each student's respository (e.g., "QB2019_Miller"), which contains a folder named "2.Worksheets". 
+(In this case stuent respositories and GitMkdirQB.sh are in the same QBstudent root directory):
+
+```
+sh GitMkdirQB.sh 2.Worksheets/1.Introductions participant_repos.txt
+```
+
+### B) Copy files to newly created directory
 To copy files, we'll use the `GitCopyQB.sh` script. 
-This take the following arguments: {path to file to copy} {path to recipient directory} {student repo list}.
+This takes the following arguments: {path to file to copy} {path to recipient directory} {student repo list}.
 For example, to copy the Phylocom assignment (replace the path to file with the path on your machine):
 
 ```
 sh GitCopyQB.sh ~/Github/QuantitativeBiodiversity/QB-2017/Week7-PhyloCom/PhyloCom_assignment.Rmd Week7-PhyloCom/ participant_repos.txt
 ```
+
+Here's what Jay did; involved frustration with not getting path exactly right
+```
+sh GitCopyQB.sh /Users/lennonj/GitHub/QB-2019/2.Worksheets/5.AlphaDiversity/5.AlphaDiversity_Worksheet.Rmd 2.Worksheets/5.AlphaDiversity/ participant_repos.txt 
+```
+
 You can arrow-up and modify file (use option left arrow for efficiency) to add another file.
 
 ### C) Add and Commit Files
@@ -152,6 +169,7 @@ Pushing to student repos is easy, just run `GitPushQB.sh` and supply the list of
 ```
 sh GitPushQB.sh participant_repos.txt
 ```
+
 ## STEP 7: OTHER SCRIPTS
 
 There are a few other scripts you may need to use.
@@ -165,7 +183,7 @@ If you need to remove a file from each student's repo, use the `GitRmQB.sh` scri
 sh GitRmQB.sh path/to/file participant_repos.txt
 ```
 
-You may need to remove a file that no longer exists in the QB_2019 repo. In this case, you can just cd to the appropriate directory containing student repos, and for example, type the following to remove a directory
+You may need to remove a file or folder that no longer exists in the QB_2019 repo. In this case, you can just cd to the appropriate directory containing student repos, and for example, type the following to remove a directory. In this case, we're using wildcads to remove "8.Phylodiversity" from each of the students's repos. 
 
 ```
 rm -r QB2019_*/2.Worksheets/8.Phylodiversity
