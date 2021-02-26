@@ -1,6 +1,6 @@
 ---
 title: "QB Student Repo Updating"
-author: "Nathan Winsoski and Jay T. Lennon"
+author: "Jay T. Lennon"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
 geometry: margin=2.54cm
@@ -28,6 +28,9 @@ eval “$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
 
+(2021: ran into problems with the eval command above, so skipped it and seemed
+to be OK for creating key)
+
 Next you need to add your SSH key to your GitHub account. 
 To obtain your SSH key, type the following command at the terminal.
 (Note: your key may be named one of the following instead of id_rsa.pub: id_dsa.pub, id_ecdsa.pub or id_ed25519.pub)
@@ -49,16 +52,21 @@ ssh -T git@github.com
 ## STEP 2: CREATE STUDENT REPOSITORIES
 
 An instructor will need to create an upstream repository for each student in the QBstudents GitHub organization (<https://github.com/QBstudents>). 
-In 2017, student repos from previous years were downloaded to local computers and then deleted. 
+For archiving, student repos from previous years were downloaded to local computers and then deleted. 
+
 
 ## STEP 3: SETUP ON YOUR LOCAL MACHINE
 
 Create a GitHub Directory (e.g., QBstudents) that contains files found in the
 QuantitativeBiodiversity/InstructorResources/GitAutomation folder (see <https://github.com/QuantitativeBiodiversity/InstructorResources>).
-(Jay forked InstructorResources to local machine then copied the contents of the GitAutomation folder to a new directory -- QBstudents -- that he created)
+(Jay forked and cloned InstructorResources to local machine then copied the 
+contents of the GitAutomation folder to a new directory -- QBstudents -- that he 
+created, or you can just have student folders in GitAutomation where shell scripts 
+are located).
 In the GitAutomation folder there is a file called `participation_repos.txt`. 
 This file must contain all of the names of the students' repositories that you created.
 Make sure there are no spaces before or after names as this will create errors.
+Also make sure that repos match up with `participation_repos.txt` (order and content?)
 The contents of `participation_repos.txt` should look like this:
 
 ```
@@ -74,7 +82,7 @@ QB2019_Rios
 QB2019_Phillips
 QB2019_Test
 ```
-Note you will also have QB2019_Test, which is for instructors use as it cannot be accessed by students.
+Note you will also have QB2021_Test, which is for instructors use as it cannot be accessed by students.
 
 ## STEP 4: CLONE STUDENT REPOSITORIES TO YOUR COMPUTER
 
