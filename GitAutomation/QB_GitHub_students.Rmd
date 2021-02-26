@@ -105,7 +105,7 @@ git clone git@github.com:QBstudents/$EachLine.git
 
 Before you update the student repositories (i.e, add files), you should first merge any pull requests that were made by students. 
 After that, you need to pull (i.e., fetch + merge) changes, which might include completed worksheet; otherwise, you will likely encounter a conflict. 
-The following script will peform a batch pull:
+The following script will perform a batch pull:
 
 ```
 sh GitPullQB.sh participant_repos.txt
