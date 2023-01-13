@@ -26,6 +26,7 @@ ssh-keygen -t rsa -C “your_email@example.com”
 ```
 
 You will be asked to enter and re-enter a passphrase.
+Alternatively, you can leave this blank. 
 After that, you need to add the new key to the SSH-agent using the following 
 commands, which will generate an agent pid. 
 
@@ -176,7 +177,15 @@ path on your machine):
 ```
 sh GitCopyQB.sh ~/Github/QuantitativeBiodiversity/QB-2017/
 Week7-PhyloCom/PhyloCom_assignment.Rmd Week7-PhyloCom/ participant_repos.txt
+
+sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/8.BetaDiversity/8.BetaDiversity_1_Worksheet.Rmd 2.Worksheets/8.BetaDiversity/ participant_repos.txt
+
+sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/8.BetaDiversity/8.BetaDiversity_2_Worksheet.Rmd 2.Worksheets/8.BetaDiversity/ participant_repos.txt
+
+# The following code will move all files and folder in the main directory over; don't need to do one-at-a-time
+sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/12.PhyloCom/ 2.Worksheets/12.PhyloCom/ participant_repos.txt
 ```
+
 
 Here's what Jay did; involved frustration with not getting path exactly right
 ```
