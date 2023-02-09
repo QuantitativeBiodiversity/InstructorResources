@@ -182,6 +182,8 @@ sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/8.BetaDiversity/8.BetaDiversity_1_
 
 sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/8.BetaDiversity/8.BetaDiversity_2_Worksheet.Rmd 2.Worksheets/8.BetaDiversity/ participant_repos.txt
 
+sh GitCopyQB.sh ~/GitHub/QB-2023/2.Worksheets/6.BetaDiversity/ 2.Worksheets/6.BetaDiversity/ participant_repos.txt
+
 # The following code will move all files and folder in the main directory over; don't need to do one-at-a-time
 sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/12.PhyloCom/ 2.Worksheets/12.PhyloCom/ participant_repos.txt
 ```
