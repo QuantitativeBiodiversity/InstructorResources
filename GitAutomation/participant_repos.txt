@@ -1,11 +1,5 @@
 
-QB2023_Albert
-QB2023_Enriquez_Madrid
-QB2023_Nadolski
-QB2023_OBrien
-QB2023_Ritter
-QB2023_Stoltz
+QB2023_Luo
+QB2023_Bueren
 QB2023_Test
-QB2023_Werkowski
-QB2023_Zambiasi
 
