@@ -175,7 +175,7 @@ sh GitMkdirQB.sh Week7-Phylocom/data participant_repos.txt
 
 In the following example, you could make a subdirectory ("1.Introductions") in 
 each student's repository (e.g., "QB2019_Miller"), which contains a folder named 
-"2.Worksheets". (In this case stuent respositories and GitMkdirQB.sh are in the 
+"2.Worksheets". (In this case student repositories and GitMkdirQB.sh are in the 
 same QBstudent root directory):
 
 ```
@@ -184,7 +184,9 @@ sh GitMkdirQB.sh 2.Worksheets/1.Introductions participant_repos.txt
 
 ### B) Copy files to newly created directory
 To copy files, we'll use the `GitCopyQB.sh` script. 
-This takes the following arguments: {path to file to copy} 
+You need to be in the directory where the script exists. 
+For example, in terminal cd to GitHub/InstructorResources/GitAutomation
+The sh. script takes the following arguments: {path to file to copy} 
 {path to recipient directory} {student repo list}.
 For example, to copy the Phylocom assignment (replace the path to file with the 
 path on your machine):
@@ -199,6 +201,16 @@ sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/8.BetaDiversity/8.BetaDiversity_2_
 
 # The following code will move all files and folder in the main directory over; don't need to do one-at-a-time
 sh GitCopyQB.sh ~/GitHub/QB-2021/2.Worksheets/12.PhyloCom/ 2.Worksheets/12.PhyloCom/ participant_repos.txt
+
+sh GitCopyQB.sh ~/GitHub/QB-2025/2.Worksheets/3.RStudio/ 2.Worksheets/3.RStudio/ participant_repos.txt
+
+# for above, it worked, but I got following error: 
+# cp: .//2.Worksheets/3.RStudio: No such file or directory
+# (base) lennonj@MacBook-Pro-629 GitAutomation % )
+# messing around with forward slashes doens't seem to fix, but the files are copies
+# so maybe not a big deal
+
+
 ```
 
 
@@ -254,8 +266,8 @@ sh GitRmQB.sh path/to/file participant_repos.txt
 You may need to remove a file or folder that no longer exists in the QB_2019 
 repo. In this case, you can just cd to the appropriate directory containing 
 student repos, and for example, type the following to remove a directory. 
-In this case, we're using wildcads to remove "8.Phylodiversity" from each of 
-the students's repos. 
+In this case, we're using wildcards to remove "8.Phylodiversity" from each of 
+the student's repo. 
 
 ```
 rm -r QB2019_*/2.Worksheets/8.Phylodiversity

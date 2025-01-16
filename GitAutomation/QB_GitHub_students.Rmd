@@ -62,10 +62,10 @@ ssh -T git@github.com
 An instructor will need to create an upstream repository for each student in the 
 QBstudents GitHub organization (<https://github.com/QBstudents>). Given that QB 
 enrollment is relatively small (n = 10), this can be done manually. We've been 
-making repositories "public" and have added gitignores for R and .DS_Store. 
-This can be done when repos are created or later with batch script as described 
-below. For archiving, student repos from previous years were downloaded as zip 
-files to local computers before deleting on github. 
+making repositories "public" and have added gitignores for R and .DS_Store. Also
+need to add a README file and license (GNU General Public License v3.0). In 2025,
+I asked students to send me their github usernames. I then added them to their repo,
+but I'm not sure this is necessary.Some of the above can be done when repos are created or later with batch script as described below. For archiving, student repos from previous years were downloaded as zip files to local computers before deleting on github. 
 
 
 ## STEP 3: SETUP ON YOUR LOCAL MACHINE
@@ -160,7 +160,7 @@ sh GitMkdirQB.sh Week7-Phylocom/data participant_repos.txt
 
 In the following example, you could make a subdirectory ("1.Introductions") in 
 each student's repository (e.g., "QB2019_Miller"), which contains a folder named 
-"2.Worksheets". (In this case stuent respositories and GitMkdirQB.sh are in the 
+"2.Worksheets". (In this case student repositories and GitMkdirQB.sh are in the 
 same QBstudent root directory):
 
 ```
