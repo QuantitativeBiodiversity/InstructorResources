@@ -126,7 +126,8 @@ Before you update the student repositories (i.e., add files), you should first
 merge any pull requests that were made by students. After that, you need to pull 
 (i.e., fetch + merge) changes, which might include completed worksheet; 
 otherwise, you will likely encounter a conflict. The following script will 
-perform a batch pull:
+perform a batch pull. Navigate to InstructorResources/GitAutomation and then
+execute, which will prompt you for password:
 
 ```
 sh GitPullQB.sh participant_repos.txt
